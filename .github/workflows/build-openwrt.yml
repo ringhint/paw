@@ -29,8 +29,8 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: false
+  UPLOAD_WETRANSFER: true
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -68,6 +68,9 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+    - name: Install Others
+      run: cd openwrt && git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+      
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
