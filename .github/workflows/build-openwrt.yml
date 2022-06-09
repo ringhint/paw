@@ -91,7 +91,10 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
+    
+    - name: COPY config
+      run: cd openwrt && mkdir bb && cp openwrt/.config openwrt/bb/
+      
 #     - name: Download package
 #       id: package
 #       run: |
@@ -122,7 +125,7 @@ jobs:
       if: env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt
+        path: openwrt/bb
 #         path: openwrt/bin
 
     - name: Organize files
