@@ -93,7 +93,7 @@ jobs:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     
     - name: COPY config
-      run: cd openwrt && mkdir bb && cp openwrt/.config openwrt/bb/
+      run: cd openwrt && mkdir bb && cp .config bb/
       
 #     - name: Download package
 #       id: package
